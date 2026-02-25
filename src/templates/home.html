@@ -1,10 +1,23 @@
 {% extends "basis.html" %}
+
 {% block content %}
-<divc class="home">
-    <div>
-        <h1>Seja bem vindo ao RPG</h1>
-        <h3>Evergreen</h3>
-    </div>
-    <a href="{{ url_for('page_lista_personagens') }}" class="btn btn-primary">Escolher seu Personagem</a>
+<div class="home-wrapper">
+    {% if usuario and usuario.user_metadata.admin %}
+        {% include 'navbars/admin.html' %}
+    {% elif usuario %}
+        {% include 'navbars/logado.html' %}
+    {% else %}
+        {% include 'navbars/navbar.html' %}
+    {% endif %}
+    <main class="main">
+        <h3>Seja bem vindo ao RPG: Eveergreen's</h3>
+        <p>Bem-vindos, aventureiros, ao incrível mundo do Evergreen's RPG! Aqui, começamos uma nova história cheia de emoção, desafios e descobertas épicas. Preparem-se para uma jornada única e memorável, onde a imaginação ganha vida e a estratégia é a chave para a vitória.
+        Nosso Rpg tem foco em batalhas com um sistema inovador e diferenciado que garante uma jogabilidade para os jogadores surpreendente, mas isso não é tudo mais sim só o começo, venha conferir o nosso Rpg.
+        </p>
+    </main>
+
+    <footer class='footer'>
+        <p>Desenvolvido por João gabriel Lira da Silva &copy 2026</p>
+    </footer>
 </div>
 {% endblock %}

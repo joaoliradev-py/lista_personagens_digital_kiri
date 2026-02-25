@@ -1,0 +1,23 @@
+{% extends "basis.html" %}
+
+{% block content %}
+<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>E-mail (fictício)</th>
+        <th>Número do Personagem oucupado</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.user_metadata.email }}</td>
+            <td>{{ usuario.user_metadata.personagem }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

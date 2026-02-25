@@ -1,0 +1,23 @@
+# Ambiente Virtual (Específico do seu projeto)
+lista_digital_kiri/
+venv/
+env/
+
+# Python (Cache e compilados)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Variáveis de Ambiente (Segurança - NUNCA suba suas chaves do Supabase)
+.env
+
+# Docker
+.dockerignore
+
+# IDEs (VS Code, PyCharm)
+.vscode/
+.idea/
+
+# Sistema
+.DS_Store
+Thumbs.db

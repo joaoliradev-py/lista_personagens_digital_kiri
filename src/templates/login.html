@@ -1,0 +1,14 @@
+{% extends "basis.html" %}
+{% block content %}
+<div>
+    <form action="{{ url_for('page_login') }}" method="POST" class="formularios">
+        {{ form.hidden_tag() }}
+        {{ form.usuario.label() }}
+        {{ form.usuario }}
+        {{ form.senha.label() }}
+        {{ form.senha }}
+        {{ form.enviar(class='btn btn-primary') }}
+        <p>Ainda não tem login? <a href="{{ url_for('page_cadastro_usuario') }}">Cadastre-se</a></p>
+    </form>
+</div>
+{% endblock %}

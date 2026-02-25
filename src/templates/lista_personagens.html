@@ -1,67 +1,67 @@
 {% extends "basis.html" %}
-
 {% block content %}
-<div class="lista-personagens">
-    <h3>Lista de personagens</h3>
-    <div class="grupo-cards">
-        <!-- Nosso Card -->
-        {% for personagem in personagens %}
+<div class="grupo-cards">
+    {% for personagem in personagens %}
+        
+    <!-- Para cada personagem, criamos um card -->
+
+      {% if not personagem.disponível %}
+
         <div class="card bg-base-100 w-96 shadow-sm">
-            <figure class="px-10 pt-10">
-
-                <!-- Se o personagem estiver bloqueado, a imagem fica cinza -->
-                {% if personagem.disponivel == False %}
-
-                    <img
-                    referrerpolicy="no-referrer"
-                    src="{{ personagem.imagem}}"
-                    class="rounded-xl grayscale" />
-
-                <!-- Se não, a imagem é normal -->
-                 {% else %}
-
-                    <img
-                    referrerpolicy="no-referrer"
-                    src="{{ personagem.imagem}}"
-                    class="rounded-xl" />
-
-                {% endif %}
-
-            </figure>
-            <div class="card-body items-center text-center">
-                <!-- Verificando se a patente é diferente de jounnin para adicionar o + -->
-                {% if personagem.patente.capitalize() != 'Jounnin' %}
-                <h2 class="card-title">
-                    {{ personagem.nome }} | Disponível para {{ personagem.patente }}+
-                </h2>
-                {% else %}
-                <h2 class="card-title">
-                    {{ personagem.nome }} | Disponível para {{ personagem.patente }}
-                </h2>
-                {% endif %}
-
-                <!-- Se o personagem estiver bloqueado, o link é cinza e não leva pra lugar algum -->
-
-                {% if personagem.disponivel == False %}
-
-
-                <div class="card-actions">
-                    <a href="#" class="btn btn-primary grayscale">oucupado</a>
-                </div>
-
-                <!-- Caso o contrário, o link leva para a área de alternar -->
-
-                {% else %}
-
-                <div class="card-actions">
-                    <a href="{{ url_for('page_selecionar_personagem', id=personagem._id) }}" class="btn btn-primary">escolher</a>
-                </div>
-
-                {% endif %}
-
+          <figure class="px-10 pt-10">
+            <img
+              src="{{ personagem.imagem }}"
+              alt="{{ personagem.nome }}"
+              class="rounded-xl grayscale"
+              referrerpolicy="no-referrer"/>
+          </figure>
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">{{ personagem.nome }}</h2>
+            <div class="card-actions">
+              <a class="btn btn-primary grayscale" href="#">Oucupado</a>
             </div>
+          </div>
         </div>
-        {% endfor %}
-    </div>
+
+      {% elif personagem.patente != usuario.patente %}
+
+        <div class="card bg-base-100 w-96 shadow-sm">
+          <figure class="px-10 pt-10">
+            <img
+              src="{{ personagem.imagem }}"
+              alt="{{ personagem.nome }}"
+              class="rounded-xl grayscale"
+              referrerpolicy="no-referrer"/>
+          </figure>
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">{{ personagem.nome }}</h2>
+            <div class="card-actions">
+              <a class="btn btn-error" href="#">Bloqueado</a>
+            </div>
+          </div>
+        </div>
+
+      {% else %}
+    
+        <div class="card bg-base-100 w-96 shadow-sm">
+          <figure class="px-10 pt-10">
+            <img
+              src="{{ personagem.imagem }}"
+              alt="{{ personagem.nome }}"
+              class="rounded-xl"
+              referrerpolicy="no-referrer"/>
+          </figure>
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">{{ personagem.nome }}</h2>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="{{ url_for('page_escolher_personagem', id=personagem.id) }}">Escolher</a>
+            </div>
+          </div>
+        </div>
+
+      {% endif %}
+
+    {% endfor %}
+
 </div>
 {% endblock %}

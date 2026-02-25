@@ -1,11 +1,13 @@
-# Importando as blbliotecas necessárias
+# Importando as bibliotecas necessárias
 from flask import Flask
 
 
-# Criando as configurações da nossa aplicação
-app = Flask(__name__)  # app
-app.config['SECRET_KEY'] = 'kirigakure'  # Chave secreta
+# Criando nosso app flask
+app = Flask(__name__)
 
 
-# Importando as rotas
-from . import routes
+# Configurando nossa chave secreta
+app.config['SECRET_KEY'] = 'kirigakure'
+
+# Importando nossas rotas
+from .routes import users, personagens, administração

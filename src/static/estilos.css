@@ -31,6 +31,57 @@ body {
     max-width: 450px; /* Ajustado para caber 3 cards de ~250px com folga */
 }
 
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1em;
+    width: 70%;
+}
+
+
+
+.main {
+    background-color: whitesmoke;
+    padding: 2em;
+}
+
+.footer {
+    background-color: black;
+    color: whitesmoke;
+    padding: 2em;
+}
+
+.nav {
+    display: flex;
+    gap: .5em;
+}
+
+.formularios {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-radius: 1em;
+    padding: 1em;
+    gap: 1em;
+
+    select {
+        padding: 10px;
+        border: none;
+        background-color: rgb(59, 116, 59);
+        color: whitesmoke;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    input[type='text'] {
+        padding: 5px;
+    }
+
+        input[type='password'] {
+        padding: 5px;
+    }
+}
+
 /* --- SEÇÃO DE CARDS (O CORAÇÃO DO PROBLEMA) --- */
 
 .grupo-cards {
@@ -51,6 +102,23 @@ body {
     background: #fff;  /* Apenas para visualização */
     border-radius: 8px;
 }
+
+/* --- ESTILIZAÇÃO DOS FLASHES --- */
+.success {
+    background-color: rgb(102, 192, 90);
+    font-weight: bold;
+    text-align: center;
+    padding: 1em;
+}
+
+.error {
+    background-color: red;
+    color: whitesmoke;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em;
+}
+
 
 /* --- REGRAS DE TEXTO RESPONSIVO --- */
 

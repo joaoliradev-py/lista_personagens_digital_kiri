@@ -1,0 +1,24 @@
+{% extends "basis.html" %}
+{% block content %}
+
+{% if form.usuario.errors %}
+{% for error in form.usuario.errors %}
+    <ul class="flashes">
+        <li>erro? {{ erro }}</li>
+    </ul>
+{% endfor %}
+{% endif %}
+
+<div>
+    <form action="{{ url_for('page_cadastro_usuario') }}" method="POST" class="formularios">
+        {{ form.hidden_tag() }}
+        {{ form.usuario.label() }}
+        {{ form.usuario }}
+        {{ form.patente.label() }}
+        {{ form.patente }}
+        {{ form.senha.label() }}
+        {{ form.senha }}
+        {{ form.enviar(class='btn btn-primary') }}
+    </form>
+</div>
+{% endblock %}

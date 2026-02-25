@@ -1,0 +1,18 @@
+<nav class="navbar bg-black shadow">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-white text-mg">Seja bem vindo {{ personagem.data.nome }}!!</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li class="text-white">
+        <details>
+          <summary>Ações Disponíveis</summary>
+          <ul class="bg-base-100 rounded-t-none p-2 text-black">
+            <li><a href="{{ url_for('page_lista_personagens') }}">Lista de Personagens</a></li>
+            <li><a href="{{ url_for('page_logout') }}">Sair</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</nav>

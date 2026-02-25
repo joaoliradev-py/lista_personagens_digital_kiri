@@ -1,28 +1,28 @@
-# Imagem base leve
+# Usar uma imagem Python leve
 FROM python:3.11-slim
 
-# Diretório de trabalho dentro do container
+# Evita que o Python gere arquivos .pyc e permite logs em tempo real
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Define o diretório de trabalho
 WORKDIR /app
 
-# Impede que o Python gere arquivos .pyc e permite logs em tempo real
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-# Instala dependências de sistema para o Atlas (Certificados SSL)
+# Instala dependências do sistema (necessárias para algumas libs de banco de dados)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copia e instala as dependências antes do código (aproveita o cache)
+# Copia apenas o requirements primeiro para aproveitar o cache do Docker
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia todo o projeto para o container
+# Copia o restante do código do projeto
 COPY . .
 
-# Expõe a porta padrão do Flask
+# Expõe a porta que o Flask vai rodar (geralmente 5000 ou 8080)
 EXPOSE 5000
 
-# Comando para rodar a aplicação
-# Nota: 'run:app' assume que seu objeto Flask está no run.py e chama-se 'app'
+# Comando para rodar a aplicação usando Gunicorn
+# Substitua 'run:app' se o seu objeto Flask estiver em outro lugar
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "run:app"]

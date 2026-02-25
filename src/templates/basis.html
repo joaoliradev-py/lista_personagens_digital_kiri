@@ -10,11 +10,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css')}}">
 </head>
 <body>
-    <main>
-        <div class="conatiner-principal">
-        {% block content %}
-        {% endblock %}
-        </div>
-    </main>
+    <!-- Configurando o nosso flash -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+ 
+    <div class="conatiner-principal">
+    {% block content %}
+    {% endblock %}
+    </div>
 </body>
 </html>

@@ -1,0 +1,36 @@
+{% extends "basis.html" %}
+
+{% block content %}
+<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Patente</th>
+        <th>Disponível?</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for personagem in personagens %}
+        <tr>
+            <td>{{ personagem.id }}</td>
+            <td>{{ personagem.nome }}</td>
+            <td>{{ personagem.patente }}</td>
+            {% if personagem.disponível %}
+            <td>Sim</td>
+            {% else %}
+            <td>Não</td>
+            {% endif %}
+            <td>
+                <a href="{{ url_for('page_atualizar_personagem', id=personagem.id) }}" class="btn btn-success">✏️</a>
+                <a href="{{ url_for('page_deletar_personagem', id=personagem.id) }}" class="btn btn-error">🗑️</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

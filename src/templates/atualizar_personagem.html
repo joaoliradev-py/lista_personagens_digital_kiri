@@ -1,0 +1,20 @@
+{% extends "basis.html" %}
+
+{% block content %}
+<div>
+    <form action="{{ url_for('page_atualizar_personagem', id=personagem.id) }}" method="POST" class="formularios">
+        {{ form.hidden_tag() }}
+        {{ form.nome.label() }}
+        {{ form.nome }}
+        {{ form.descricao.label() }}
+        {{ form.descricao }}
+        {{ form.imagem.label() }}
+        {{ form.imagem }}
+        {{ form.disponivel.label() }}
+        {{ form.disponivel }}
+        {{ form.patente.label() }}
+        {{ form.patente }}
+        {{ form.enviar(class='btn btn-primary')}}
+    </form>
+</div>
+{% endblock %}
