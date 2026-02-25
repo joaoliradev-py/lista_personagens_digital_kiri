@@ -10,10 +10,9 @@ import os
 # Nossas credenciais
 URL: str = os.getenv('SUPABASE_URL')
 KEY: str = os.getenv('SUPABASE_KEY')
-ROLE_KEY: str = os.getenv('SUPABASE_ROLE_KEY')
 
 # Criando um cliente geral para fins de autenticação
-supabase_admin = create_client(URL, ROLE_KEY)
+supabase_admin = create_client(URL, KEY)
 
 
 def get_supabase_client():
