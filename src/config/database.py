@@ -4,10 +4,8 @@
 from supabase import create_client
 from flask import request
 import os
-import dotenv
 
 # Carregando as variáveis de ambiente
-dotenv.load_dotenv()
 
 # Nossas credenciais
 URL: str = os.getenv('SUPABASE_URL')
