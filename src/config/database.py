@@ -10,9 +10,10 @@ import os
 # Nossas credenciais
 URL: str = os.environ.get('SUPABASE_URL')
 KEY: str = os.environ.get('SUPABASE_KEY')
+ROLE_KEY: str = os.environ.get('SUPABASE_ROLE_KEY')
 
 # Criando um cliente geral para fins de autenticação
-supabase_admin = create_client(URL, KEY)
+supabase_admin = create_client(URL, ROLE_KEY)
 
 
 def get_supabase_client():
@@ -25,8 +26,6 @@ def get_supabase_client():
     # Se não tiver token, visitante sem convite
     if not access_token or not refresh_token:
         return None
-
-    print(f"DEBUG: A chave começa com: {KEY[:12] if KEY else 'NADA'}")
 
     try:
         supabase = create_client(URL, KEY)
