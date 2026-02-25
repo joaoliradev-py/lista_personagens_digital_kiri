@@ -8,8 +8,8 @@ import os
 # Carregando as variáveis de ambiente
 
 # Nossas credenciais
-URL: str = os.getenv('SUPABASE_URL')
-KEY: str = os.getenv('SUPABASE_KEY')
+URL: str = os.environ.get('SUPABASE_URL')
+KEY: str = os.environ.get('SUPABASE_KEY')
 
 # Criando um cliente geral para fins de autenticação
 supabase_admin = create_client(URL, KEY)
