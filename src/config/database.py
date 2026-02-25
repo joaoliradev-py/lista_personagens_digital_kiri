@@ -26,6 +26,8 @@ def get_supabase_client():
     if not access_token or not refresh_token:
         return None
 
+    print(f"DEBUG: A chave começa com: {KEY[:12] if KEY else 'NADA'}")
+
     try:
         supabase = create_client(URL, KEY)
         supabase.auth.set_session(
