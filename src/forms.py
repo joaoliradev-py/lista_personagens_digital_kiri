@@ -11,10 +11,7 @@ from wtforms.validators import DataRequired, Regexp
 class LoginUsuarioForm(FlaskForm):
     usuario = StringField(
         label='informe o seu usuário (use o nome real, mas não completo)',
-        validators=[DataRequired(),
-                    Regexp(r'^[a-zA-Z0-9]+$',
-                           message="O nome não pode conter espaços ou acentos")
-                    ]
+        validators=[DataRequired(),]
     )
     senha = PasswordField(
         label='informe sua senha',
